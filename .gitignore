@@ -1,0 +1,28 @@
+# === CopilotProxy 运行副本（不入库）===
+# CopilotProxy 是独立项目（aristo7298sub/copilot-proxy），在本目录下是一份可运行副本。
+# 它有自己的版本库，且含 node_modules / 构建产物，体积大，不应进 codex-llm-node 仓。
+# 本仓只维护 Codex 节点的配置说明与助手脚本；代理本体单独获取/运行。
+CopilotProxy/
+
+# === Node / Bun ===
+node_modules/
+bun.lockb
+dist/
+*.tsbuildinfo
+
+# === 日志 / 临时 ===
+*.log
+*.tmp
+
+# === OS / 编辑器 ===
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+*.swp
+*~
+
+# === 本地密钥 / 配置实例（只保留 .sample）===
+config.toml
+.env
+.env.*

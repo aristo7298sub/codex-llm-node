@@ -1,0 +1,23 @@
+# =============================================================================
+# CopilotProxy LLM 节点 — Codex 配置片段
+# =============================================================================
+# 用法：把下面的内容合并进用户级配置 C:\Users\<你>\.codex\config.toml 的顶部。
+#       注意只动“用户级” config.toml；project 级 .codex/config.toml 和 --profile
+#       文件里的 model_provider / model_providers 会被 Codex 忽略。
+#
+# 前置：CopilotProxy 需在运行 ->
+#       cd <CopilotProxy 所在目录> ; bun run src/main.ts start
+#
+# 改完后必须“完全重启 Codex App”（多进程，全部退出再开）才会生效。
+# 切回 ChatGPT：把下面的 model_provider 行注释掉，再重启 App。
+# =============================================================================
+
+model = "gpt-5.5"                 # 也可换成 claude-opus-4.8 / gpt-5.3-codex 等（见 README 第 6 节）
+model_provider = "copilot-proxy"  # 指向下面定义的本地代理 provider
+model_reasoning_effort = "high"   # 可选；对 Claude（ChatCompletions 路径）无效，可保留
+
+[model_providers.copilot-proxy]
+name = "CopilotProxy (GitHub Copilot)"
+base_url = "http://localhost:4399/v1"
+wire_api = "responses"            # 0.140 自定义 provider 唯一支持值
+# 无需 env_key / API key —— 代理不校验鉴权
